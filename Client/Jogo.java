@@ -2,6 +2,10 @@ package Client;
 import java.util.Scanner;
 import java.util.Map;
 
+//import InterfaceGrafica.JJ.build.classes.Jogos.*;
+
+import InterfaceGrafica.JJ.build.classes.Jogos;
+
 public class Jogo{
     public int rodada_atual = 1;
     public Jogador jogador,jogador_oponente;
@@ -41,6 +45,8 @@ public class Jogo{
             jogador_oponente = new Jogador(nome_jogador,tipo_personagem);
             jogador_oponente.personagem.set_arma(tipo_arma);
         }else{
+
+            
             //Atualmente sem inteface gráfica:
             System.out.print("Diga o nome do Jogador: ");
             nome_jogador = sc.nextLine();

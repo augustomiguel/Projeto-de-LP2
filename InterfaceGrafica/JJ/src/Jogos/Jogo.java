@@ -1,6 +1,8 @@
 
 package Jogos;
 
+import InterfaceGrafica.JJ.build.classes.Jogos.*;
+
 public class Jogo extends javax.swing.JFrame {
     
     /**
