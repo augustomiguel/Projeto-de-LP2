@@ -2,15 +2,15 @@ package Client;
 import java.util.Scanner;
 import java.util.Map;
 
-//import InterfaceGrafica.JJ.build.classes.Jogos.*;
-
-import InterfaceGrafica.JJ.build.classes.Jogos;
+//import InterfaceGrafica.JJ.Jogos.*;
 
 public class Jogo{
     public int rodada_atual = 1;
     public Jogador jogador,jogador_oponente;
     public Scanner sc = new Scanner(System.in);
     public Boolean endgame = false;
+
+
 
     // public void startGame(){
     //     while(true){
