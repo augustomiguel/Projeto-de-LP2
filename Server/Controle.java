@@ -4,6 +4,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
 import common.Mensagem;
 
 public class Controle implements Runnable{
@@ -11,6 +14,7 @@ public class Controle implements Runnable{
     private ObjectInputStream[] in = new ObjectInputStream[2];
     private ObjectOutputStream[] out = new ObjectOutputStream[2]; 
     public Integer vez = 0;
+    public Boolean endgame = false;
 
     public Controle(Socket[] sock) throws IOException{
         this.sockets = sock;
@@ -44,6 +48,8 @@ public class Controle implements Runnable{
                 int player = mensagem.player == 0 ? 1: 0;
                 sendMessage(mensagem.conteudo, mensagem.titulo, player);
                 break;
+            case "Terminar Jogo":
+                endgame = true;
             default:
                 break;
         }
@@ -74,15 +80,27 @@ public class Controle implements Runnable{
 
                 sendMessage(0, "Escolher Golpe", vez);
                 Mensagem mensagem;
+
                 do{
                     mensagem = (Mensagem)in[vez].readObject();
-                    sendMessage(mensagem.conteudo, "Calcular Dano", getInverso(vez));
-                    vez = getInverso(vez);
                 }
                 while(mensagem.titulo == "Golpe");
-            }
 
-        } catch (ClassNotFoundException | IOException e) {
+                @SuppressWarnings (value="unchecked")
+                Map<String,Integer> golpe = (HashMap<String,Integer>)mensagem.conteudo;
+
+                sendMessage(golpe, "Calcular Dano", getInverso(vez));
+                
+                if(golpe.get("Atordoar") <= 0){
+                    vez = getInverso(vez);
+                }
+
+                sendMessage(golpe, "Terminar Rodada", 0);
+                sendMessage(golpe, "Terminar Rodada", 1);
+                
+            }
+        }
+        catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
     }

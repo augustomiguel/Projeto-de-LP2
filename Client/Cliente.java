@@ -69,7 +69,7 @@ public class Cliente{
                 String jg = (int)conteudo == ordem ? jogo.jogador.nome: jogo.jogador_oponente.nome;
                 System.out.println("\n\nRodada "+jogo.rodada_atual+"\nVez de "+jg);
                 System.out.println("\nSua vida: "+jogo.jogador.personagem.vida+"\nVida do oponente: "+jogo.jogador_oponente.personagem.vida);
-                jogo.rodada_atual++;
+                jogo.rodada_atual += 1;
                 break;
             case "Adicionar Oponente":
                     adicionarOponente((String[])conteudo);
@@ -87,6 +87,15 @@ public class Cliente{
                     Map<String,Integer> golp = (HashMap<String,Integer>)conteudo;
                     jogo.calcular_dano(golp, jogo.jogador_oponente, jogo.jogador);
                     break;
+            case "Terminar Rodada":
+                if(jogo.jogador.personagem.vida <= 0){
+                    System.out.println("\nVOCÊ PERDEU!");
+                    System.exit(0);
+                }else if(jogo.jogador_oponente.personagem.vida <= 0){
+                    System.out.println("\nVOCÊ GANHOU!");
+                    System.exit(0);
+                }
+                break;
             default:
                 break;
             }

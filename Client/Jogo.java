@@ -45,8 +45,6 @@ public class Jogo{
             jogador_oponente = new Jogador(nome_jogador,tipo_personagem);
             jogador_oponente.personagem.set_arma(tipo_arma);
         }else{
-
-            
             //Atualmente sem inteface gráfica:
             System.out.print("Diga o nome do Jogador: ");
             nome_jogador = sc.nextLine();
@@ -57,13 +55,11 @@ public class Jogo{
             tipo_arma = sc.nextLine();
             
             //Só essa parte ficará, com a interface gráfica:
-            }
-
             jogador = new Jogador(nome_jogador,tipo_personagem);
             jogador.personagem.set_arma(tipo_arma);
             System.out.println("Nome do Jogador: " + jogador.nome + "\nPersonagem do Jogador: " + jogador.personagem.tipo);
+            }
         }
-    
 
     public Map<String,Integer> escolher_golpe(Jogador jogador){
         int comando = 0;

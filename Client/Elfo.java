@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Elfo extends Personagem implements Serializable{
     public Elfo(){
         tipo = "Elfo";
-        vida = 1800;
+        vida = 300;
         ataque = 300;
         armadura = 30;
     }
