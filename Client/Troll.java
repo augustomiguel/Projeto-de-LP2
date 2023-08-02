@@ -2,7 +2,7 @@ package Client;
 public class Troll extends Personagem{
     public Troll(){
         tipo = "Troll";
-        vida = 600;
+        vida = 2200;
         ataque = 150;
         armadura = 80;
     }

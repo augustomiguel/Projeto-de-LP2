@@ -42,6 +42,11 @@ public class Controle implements Runnable{
         }
     }
 
+    // public void receberMensagem(int player) throws IOException, ClassNotFoundException{
+    //         Mensagem mensagem = (Mensagem)in[player].readObject();
+    //         protocolo(mensagem);
+    // }
+
     public void protocolo(Mensagem mensagem) throws IOException{
         switch (mensagem.titulo) {
             case "Adicionar Oponente":
@@ -69,10 +74,13 @@ public class Controle implements Runnable{
             sendMessage(1, "Ordem no Jogo", 1);
 
             //Criando threads para receber mensagens do cliente
-            Thread thread1 = new Thread(receberMensagem(0));
-            Thread thread2 = new Thread(receberMensagem(1));
-            thread1.start();
-            thread2.start();
+            // Thread thread1 = new Thread(receberMensagem(0));
+            // Thread thread2 = new Thread(receberMensagem(1));
+            // thread1.start();
+            // thread2.start();
+            
+            receberMensagem(0);
+            receberMensagem(1);
 
             while(true){
                 sendMessage(vez, "Iniciar Rodada", 0);

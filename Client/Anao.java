@@ -2,7 +2,7 @@ package Client;
 public class Anao extends Personagem{
     public Anao(){
         tipo = "Anao";
-        vida = 500;
+        vida = 2000;
         ataque = 225;
         armadura = 50;
     }
